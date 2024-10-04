@@ -1,11 +1,11 @@
-from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
+from llama_index.core import SimpleDirectoryReader, VectorStoreIndex, Settings
 from llama_index.llms.openai import OpenAI
 from llama_index.core.node_parser import SimpleNodeParser
 import os
 import sys
 from crawler import crawl
 
-os.environ["OPENAI_API_KEY"] = "YOUR API KEY"
+os.environ["OPENAI_API_KEY"] = "YOUR-API-KEY"
 
 # to download and save docs - python docs-agent.py -download <url> <name of folder to create and save docs to>
 # to run query engine on docs - python docs-agent.py -run <folder containing docs>
@@ -20,7 +20,8 @@ elif sys.argv[1] == '-run':
     print(f"\nLoaded {len(docs)} docs\nBuilding query engine")
 
     # define LLM
-    llm = OpenAI(model="gpt-4")
+    llm = OpenAI(model="gpt-4o")
+    Settings.llm = llm
 
     # build index and query engine
     node_parser = SimpleNodeParser.from_defaults(chunk_size=260,chunk_overlap=2)
