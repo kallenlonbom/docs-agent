@@ -11,5 +11,9 @@ Clone repo
 
 ## Usage
 
-To download docs and run query engine - python docs-agent.py -download <url> <folder to save docs to>  
-To run query engine on already downloaded docs - python docs-agent.py <folder containing docs>  
+To download and save docs to new folder - python docs-agent.py -download <url> <folder name>  
+To run query engine on saved docs - python docs-agent.py -run <folder name>  
+
+## Warning  
+
+Running the engine on large collections of docs will take a significant amount of API credits. (ex. 1,287 pages for a total of ~60 MB costs ~$3 to build). Once the engine is running, each individual won't use a significant amount, but every time the program is restarted, the engine must be started again. Automatic saving of index state will be added soon to remedy this.
